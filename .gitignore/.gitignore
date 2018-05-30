@@ -1,0 +1,259 @@
+package calc;
+
+import java.awt.EventQueue;
+import java.util.Scanner;
+
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import java.awt.BorderLayout;
+import javax.swing.JTextPane;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.CardLayout;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class calc {
+
+	private JFrame frame;
+	private JTextField text;
+	
+	double first;
+	double second;
+	double equ;
+	String operator;
+	String answ;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					calc window = new calc();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public calc() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frame = new JFrame();
+		frame.setBounds(100, 100, 252, 335);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setLayout(null);
+		
+		text = new JTextField();
+		text.setBounds(10, 11, 216, 38);
+		frame.getContentPane().add(text);
+		text.setColumns(10);
+		// row -------------------------------------------------------------------------
+		JButton btnadd = new JButton("+");
+		btnadd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText().replace(",", "."));
+				text.setText("");
+				operator = "+";
+				
+			}
+		});
+		btnadd.setBounds(10, 60, 47, 38);
+		frame.getContentPane().add(btnadd);
+		
+		JButton btnmin = new JButton("-");
+		btnmin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText().replace(",", "."));
+				text.setText("");
+				operator = "-";
+			}
+		});
+		btnmin.setBounds(67, 60, 47, 38);
+		frame.getContentPane().add(btnmin);
+		
+		JButton btnmulti = new JButton("*");
+		btnmulti.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first = Double.parseDouble(text.getText().replace(",", "."));
+				text.setText("");
+				operator = "*";
+			}
+		});
+		btnmulti.setBounds(124, 60, 47, 38);
+		frame.getContentPane().add(btnmulti);
+		
+		JButton btndiv = new JButton("/");
+		btndiv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				first = Double.parseDouble(text.getText().replace(",", "."));
+				text.setText("");
+				operator = "/";
+			}
+		});
+		btndiv.setBounds(181, 60, 47, 38);
+		frame.getContentPane().add(btndiv);
+		
+		JButton btnequ = new JButton("=");
+		btnequ.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				String answ;
+				second = Double.parseDouble(text.getText());
+				if (operator == "+") {
+					equ = first + second ;
+					answ = String.format("%,.2f", equ);
+					text.setText(answ);
+					first = 0;
+				}else if ( operator == "-") {
+					equ = first - second ;
+					answ = String.format("%,.2f", equ);
+					text.setText(answ);
+				}else if  (operator == "*") {
+					equ = first * second ;
+					answ = String.format("%,.2f", equ);
+					text.setText(answ);
+				}else if  (operator == "/") {
+					equ = first / second ;
+					answ = String.format("%,.2f", equ);
+					text.setText(answ);
+				}
+				
+			}
+		});
+		btnequ.setBounds(181, 109, 47, 38);
+		frame.getContentPane().add(btnequ);
+		// row -------------------------------------------------------------------------
+		JButton btn7 = new JButton("7");
+		btn7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn7.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn7.setBounds(10, 109, 47, 38);
+		frame.getContentPane().add(btn7);
+		
+		JButton btn8 = new JButton("8");
+		btn8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn8.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn8.setBounds(67, 109, 47, 38);
+		frame.getContentPane().add(btn8);
+		
+		JButton btn9 = new JButton("9");
+		btn9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn9.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn9.setBounds(124, 109, 47, 38);
+		frame.getContentPane().add(btn9);
+		// row -------------------------------------------------------------------------
+		JButton btn4 = new JButton("4");
+		btn4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn4.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn4.setBounds(10, 158, 47, 38);
+		frame.getContentPane().add(btn4);
+		
+		JButton btn5 = new JButton("5");
+		btn5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn5.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn5.setBounds(67, 158, 47, 38);
+		frame.getContentPane().add(btn5);
+		
+		JButton btn6 = new JButton("6");
+		btn6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn6.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn6.setBounds(124, 158, 47, 38);
+		frame.getContentPane().add(btn6);
+		// row -------------------------------------------------------------------------
+		JButton btn1 = new JButton("1");
+		btn1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn1.getText();
+				text.setText(EnterNumber );
+				
+			}
+		});
+		btn1.setBounds(10, 207, 47, 38);
+		frame.getContentPane().add(btn1);
+		
+		JButton btn2 = new JButton("2");
+		btn2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn2.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn2.setBounds(67, 207, 47, 38);
+		frame.getContentPane().add(btn2);
+		
+		JButton btn3 = new JButton("3");
+		btn3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn3.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn3.setBounds(124, 207, 47, 38);
+		frame.getContentPane().add(btn3);
+		// row -------------------------------------------------------------------------
+		JButton btn0 = new JButton("0");
+		btn0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String EnterNumber = text.getText() + btn0.getText();
+				text.setText(EnterNumber );
+			}
+		});
+		btn0.setBounds(67, 256, 47, 38);
+		frame.getContentPane().add(btn0);
+		
+		JButton btnBack = new JButton("<-");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String back=null;
+				if(text.getText().length()>0) {
+					StringBuilder strmin = new StringBuilder(text.getText());
+					strmin.deleteCharAt(text.getText().length()-1);
+					back =strmin.toString();
+					text.setText(back);
+				}
+			}
+		});
+		btnBack.setBounds(181, 158, 47, 38);
+		frame.getContentPane().add(btnBack);
+	}
+}
